@@ -10,3 +10,4 @@ scenarios:
   - flow:
     - get:
         url: "/pets"
+
