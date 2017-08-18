@@ -1,8 +1,14 @@
 config:
   target: 'http://localhost:8080'
   phases:
-    - duration: 60
-      arrivalRate: 20
+    - duration: 120
+      arrivalRate: 5
+#      rampTo: 50
+  payload:
+    path: "pets.csv"
+    fields:
+      - "name"
+      - "category"
   defaults:
     headers:
       Accept: 'application/hal+json, application/json'
@@ -10,4 +16,15 @@ scenarios:
   - flow:
     - get:
         url: "/pets"
+    - think: 3
+    - post:
+        url: "/pets"
+        json:
+          name: "{{ name }}"
+          category:
+            json:
+              name: "{{ category }}"
+          photoUrls: []
+          tags: []
+          status: available
 
