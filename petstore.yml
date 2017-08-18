@@ -21,9 +21,7 @@ scenarios:
         url: "/pets"
         json:
           name: "{{ name }}"
-          category:
-            json:
-              name: "{{ category }}"
+          category: {name: "{{ category }}"}
           photoUrls: []
           tags: []
           status: available
